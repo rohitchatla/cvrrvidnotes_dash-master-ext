@@ -1,0 +1,130 @@
+<!doctype html>
+	<head>
+		<style>
+			/* CSS comes here */
+			body {
+			    font-family: arial;
+			}
+			button {
+			    padding:10px;
+			    background-color:#6a67ce;
+			    color: #FFFFFF;
+			    border: 0px;
+			    cursor:pointer;
+			    border-radius: 5px;
+			}
+			#output {
+			    background-color:#F9F9F9;
+			    padding:10px;
+			    width: 100%;
+			    margin-top:20px;
+			    line-height:30px;
+			}
+			.hide {
+			    display:none;
+			}
+			.show {
+			    display:block;
+			}
+		</style>
+		<title>JavaScript Speech to Text</title>
+	</head>
+	<body>
+		<h2>JavaScript Speech to Text</h2>
+        <p>Click on the below button and speak something...</p>
+        <p><button type="button" onclick="runSpeechRecognition(1)">Speech to Text</button> &nbsp; <span id="action"></span></p>
+        <p><button type="button" onclick="stop()">Stop</button> &nbsp; <span id="action"></span></p><!-- runSpeechRecognition(0) -->
+        <div id="output" class="hide"></div>
+		<script>
+			/* JS comes here */
+			// get output div reference
+			const url = 'https://randomuser.me/api';
+
+			fetch(url)
+			.then((resp) => resp.json())
+			.then(function(data) {
+			  console.log(data)
+			})
+			.catch(function(error) {
+			  console.log(error);
+			});
+
+			
+
+			
+
+
+				var text='';	
+		        var output = document.getElementById("output");
+		        // get action element reference
+		        var action = document.getElementById("action");
+                // new speech recognition object
+                var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
+                var recognition = new SpeechRecognition();
+            	recognition.continuous = true;
+            	recognition.interimResults = true;
+
+		    function runSpeechRecognition(control) {
+		        // start recognition
+                 recognition.start();
+
+                // This runs when the speech recognition service starts
+                recognition.onstart = function() {
+                    action.innerHTML = "<small>listening, please speak...</small>";
+                };
+                
+                // recognition.onspeechend = function() {
+                //     action.innerHTML = "<small>stopped listening, hope you are done...</small>";
+                //     recognition.stop();
+                // }
+              	
+              	
+                // This runs when the speech recognition service returns result
+                recognition.onresult = function(event) {
+                    var transcript = event.results[event.results.length -1][0].transcript;
+                    var confidence = event.results[event.results.length -1][0].confidence;
+                    text+=transcript
+                    console.log(text)
+                    // output.innerHTML = "<b>Text:</b> " + transcript + "<br/> <b>Confidence:</b> " + confidence*100+"%";
+                    // output.classList.remove("hide");
+                    // if(control==0){
+                    // 	console.log(text);
+                    // 	recognition.stop();
+                    // }
+                };
+
+                // recognition.sessionStopped = function(e) {
+                // 	console.log(text);             
+                // }
+
+                // var finalTranscripts = "";
+                // recognition.onresult = function(event){
+                //     var interimTranscripts = "";
+                //     for(var i=event.resultIndex; i<event.results.length; i++){
+                //         var transcript = event.results[i][0].transcript;
+                //         transcript.replace("\n", "<br>");
+                //         if(event.results[i].isFinal){
+                //             finalTranscripts += transcript;
+                //         }
+                //         else{
+                //             interimTranscripts += transcript;
+                //         }
+                //         //r.innerHTML = finalTranscripts + '<span style="color: #999;">' + interimTranscripts + '</span>';
+                //     }
+                //     output.innerHTML = "<b>Text:</b> " + finalTranscripts;
+                //     output.classList.remove("hide");
+                // };
+              
+                 
+	        }
+
+	        function stop(){
+	        	console.log(text);
+				recognition.stop();
+				//recognition.abort();
+				console.log("stopped");
+			}
+
+		</script>
+	</body>
+</html>

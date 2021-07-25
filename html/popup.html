@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Cvrrvidnotes</title>
+    <link rel="stylesheet" href="../css/popup.css" />
+    <!-- Latest compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div id="content-buttons">
+      <p style="margin: 0; margin-bottom: 10px" class="details">
+        <a href="" target="_blank">Dashboard</a>
+        <button id="logOut">Log Out</button>
+      </p>
+    </div>
+    <a href="#">
+      <img src="../assets/cvrr_logo.svg" class="logo" />
+    </a>
+    <div id="login" class="login">
+      <div class="form">
+        <div>
+          <span>Email Address</span>
+          <input
+            id="email"
+            class="form-input"
+            type="text"
+            placeholder="Enter your Email Address"
+          />
+        </div>
+        <div>
+          <span>Password</span>
+          <input
+            id="password"
+            class="form-input"
+            type="password"
+            placeholder="Enter your Password"
+          />
+        </div>
+        <input
+          class="action-buttons btn btn-warning"
+          type="submit"
+          id="submit"
+          value="Sign In"
+        />
+        <p style="text-align: center; margin: 0; font-size: 0.94rem">OR</p>
+        <button id="google-btn" class="google-btn">
+          <img
+            class="google-icon"
+            src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
+          />
+          <span>Login with Google</span>
+        </button>
+        <span style="font-weight: 100; font-size: 0.94rem"
+          >Don't have an account? What are you waiting for
+          <a href="https://standnote.netlify.app/register" target="_blank"
+            >Create Now!</a
+          ></span
+        >
+      </div>
+    </div>
+    <div id="content" class="content">
+      <p></p>
+      <button class="action-buttons" id="start-record">
+        Generate Magic(vidnotes)
+      </button>
+      <p style="font-size: 0.75rem; text-align: center; margin: 4px">
+        Signed In as: <span id="emailID"></span>
+      </p>
+    </div>
+
+    <script src="../javascript/popup.js"></script>
+  </body>
+</html>

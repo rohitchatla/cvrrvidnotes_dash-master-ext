@@ -1,0 +1,52 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "",
+      "name": "",
+      "avatar_url": "<github profile url>",
+      "profile": "<github url>",
+      "contributions": [
+]},{
+      "login": "",
+      "name": " ",
+      "avatar_url": "",
+      "profile": "",
+      "contributions": [
+        "code"
+]},{
+      "login": "",
+      "name": "",
+      "avatar_url": "",
+      "profile": "",
+      "contributions": [
+        "code"
+]},{
+      "login": "",
+      "name": "",
+      "avatar_url": "",
+      "profile": "",
+      "contributions": [
+        "code"]},
+        
+      {"login": "",
+      "name": "",
+      "avatar_url": "",
+      "profile": "",
+      "contributions": [
+        "code",
+        "design"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "",
+  "projectOwner": "",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}

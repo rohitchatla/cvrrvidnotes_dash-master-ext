@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CvrrVidNotes</title>
+    <link rel="stylesheet" href="../css/textEditor.css" />
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <!-- <script src="../javascript/watson-speech.js"></script> -->
+
+    <!-- Latest compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="navbar">
+      <img src="../assets/cvrr_logo.jpg" alt="Logo White" />
+    </div>
+    <div class="content">
+      <div>
+        <h1>VidNotes Text</h1>
+        <textarea
+          id="meetingText"
+          placeholder="(Magic text comes over here)"
+        ></textarea>
+      </div>
+      <form id="submit-meeting-details" class="right-content">
+        <p>
+          VidMetting Text:&nbsp;
+          <input
+            id="title"
+            type="text"
+            name="meeting-agenda"
+            placeholder="Please enter the agenda of the meeting"
+            required
+          />
+        </p>
+        <p>Duration: &nbsp;<span id="duration"></span></p>
+        <p>Confidence Score: &nbsp;<span id="score"></span></p>
+        <span style="color: #585858; margin-left: 10px; font-size: 1rem"
+          >(A confidence score is a value between 0-100, it tells us how
+          effective our algorithms are working. The higher the score, the
+          efficient the algorithms.)</span
+        >
+        <button type="submit" id="sendText" class="btn btn-warning">
+          Generate Magic Notes for the VidMeet
+        </button>
+        <p id="error"></p>
+      </form>
+    </div>
+    <div class="message">
+      <lottie-player
+        src="https://assets6.lottiefiles.com/packages/lf20_tUKSTf.json"
+        background="transparent"
+        speed="0.8"
+        style="width: 250px; height: 250px"
+        autoplay
+      ></lottie-player>
+      <!-- <lottie-player
+        src="https://assets4.lottiefiles.com/packages/lf20_pmYw5P.json"
+        background="transparent"
+        speed="0.5"
+        style="width: 250px; height: 250px"
+        autoplay
+      ></lottie-player> -->
+      <h1>Hey there, Thanks for using CvrrVidNotes 👋≧◉ᴥ◉≦</h1>
+      <!-- &#128516; -->
+      <p style="line-height: 1.5">
+        We've recieved your meeting's text. We'll notify you once your meeting
+        notes are processed or ready!
+        <br />
+        Till then, Happy Magic Meetings :D
+      </p>
+    </div>
+    <script src="../javascript/textEditor.js"></script>
+  </body>
+</html>

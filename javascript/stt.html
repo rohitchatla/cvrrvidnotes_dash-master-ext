@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Watson Speech to Text client example</title>
+  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+
+
+
+<body>
+		<div class="container">
+		<!-- <a href="/">&laquo; Examples</a> -->
+
+		<section>
+		    <h2>Transcribe from Microphone</h2>
+		    <button id="button">Start Microphone Transcription</button>
+		    <button id="stop">Stop</button>
+
+		    <!-- <h2>Output:</h2>
+		    <div id="output">Open your browser's console to view the output.</div> -->
+		</section>
+
+
+
+		<!-- <h2>Code for this demo:</h2> -->
+
+		<!-- <pre><code> -->
+		<!-- 	<script>.....</script>
+		 --><!-- </code></pre> -->
+
+		</div>
+</body>
+
+<script src="watson-speech.js"></script><!-- scripts/watson-speech/dist/watson-speech.js -->
+<!-- window.fetch pollyfill for IE/Edge & Older Chrome/FireFox -->
+<script src="scripts/fetch/dist/fetch.umd.js"></script>
+<!-- style="display: block;"
+ -->
+ <script>
+		document.querySelector('#button').onclick = function () {
+		var text='';
+		  fetch('http://localhost:3002/api/speech-to-text/token')
+		  .then(function(response) {
+		      return response.json();
+		  }).then(function (token) {
+
+		    var stream = WatsonSpeech.SpeechToText.recognizeMicrophone(Object.assign(token, {
+		        objectMode: true, // send objects instead of text
+		        format: false // optional - performs basic formatting on the results such as capitals an periods
+		    }));
+
+		    stream.on('data', function(data) {
+		      //console.log(data);
+		      if(data.results[data.results.length -1].alternatives[0].confidence && data.results[data.results.length -1].alternatives[0].confidence>0.57){
+		      	transcript=data.results[data.results.length -1].alternatives[0].transcript
+		      	text+=transcript
+		      	console.log(text)
+		      }
+		      
+		    });
+
+		    stream.on('error', function(err) {
+		        console.log(err);
+		    });
+
+		    document.querySelector('#stop').onclick = stream.stop.bind(stream);
+
+		  }).catch(function(error) {
+		      console.log(error);
+		  });
+		};
+
+</script>
+
+</html>

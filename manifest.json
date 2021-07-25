@@ -1,0 +1,56 @@
+{
+  "manifest_version": 2,
+  "key": "fdgsfdfdgfdgfgfgdfsgfdgfgfgfgfsdgfdg",
+  "name": "Cvrrvidnotes",
+  "version": "1.0.0",
+  "description": "Cvrrvidnotes",
+  "short_name": "Cvrrvidnotes",
+
+  "icons": {
+    "128": "assets/cvrr_logo128.png",
+    "48": "assets/cvrr_logo48.png",
+    "16": "assets/cvrr_logo16.png"
+  },
+
+  "browser_action": {
+    "default_popup": "html/popup.html",
+    "default_icon": "assets/cvrr_logo48.png"
+  },
+
+  "background": {
+    "scripts": [
+      "javascript/micPermission.js",
+      "javascript/azure-speech-to-text.js",
+      "javascript/microsoft.cognitiveservices.speech.sdk.bundle-min.js",
+      "javascript/eventPage.js",
+      "javascript/watson-speech.min.js"
+    ],
+    "persistant": false
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["javascript/content.js"],
+      "css": ["css/content.css"]
+    }
+  ],
+
+  "web_accessible_resources": ["assets/*"],
+
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+
+  "permissions": [
+    "storage",
+    "identity",
+    "<all_urls>",
+    "https://standnote.herokuapp.com/*",
+    "tabs",
+    "tabCapture"
+  ],
+
+  "oauth2": {
+    "client_id": "337386111803-7o99c71aahdhtkffc5q0c316a4btgn48.apps.googleusercontent.com",
+    "scopes": ["https://www.googleapis.com/auth/userinfo.email"]
+  }
+}
